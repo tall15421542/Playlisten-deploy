@@ -11,7 +11,6 @@ services:
     env_file:
       - PlayListen-backend/.env.prod
   webserver:
-    build: ./nginx
     image: tall15421542/playlisten-deploy:webserver_ssl_prod_v1
     ports:
       - 80:80
