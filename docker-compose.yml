@@ -9,7 +9,11 @@ services:
     ports:
       - 8000:8000
     env_file:
-      - PlayListen-backend/.env.prod
+      - PlayListen-backend/env.prod
+      - PlayListen-backend/env.youtube
+      - PlayListen-backend/env.facebook
+      - PlayListen-backend/env.google
+      - PlayListen-backend/env.db
   webserver:
     image: tall15421542/playlisten-deploy:webserver_ssl_prod_v1
     ports:
