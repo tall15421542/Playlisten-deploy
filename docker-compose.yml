@@ -12,6 +12,7 @@ services:
       - PlayListen-backend/.env.prod
   webserver:
     build: ./nginx
+    image: tall15421542/playlisten-deploy:webserver_ssl_prod_v1
     ports:
       - 80:80
       - 443:443
@@ -19,11 +20,12 @@ services:
       - frontend
       - backend
     volumes:
-      - ./certbot/www/:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
+     # - ./certbot/www/:/var/www/certbot/:ro // For certbot certificate
+     # - ./certbot/conf/:/etc/nginx/ssl/:ro // For certbot certificate
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf:/etc/letsencrypt/:rw
+  # For ssl certificate
+  # certbot:
+    # image: certbot/certbot:latest
+    # volumes:
+    #  - ./certbot/www/:/var/www/certbot/:rw
+    #  - ./certbot/conf:/etc/letsencrypt/:rw
